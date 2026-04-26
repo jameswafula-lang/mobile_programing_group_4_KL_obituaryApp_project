@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ObituaryApp</string>
+    <string name="slogan">In Need We Care</string>
+    <string name="funeral_service">A Plus Funeral Services</string>
+    <string name="btn_start">Create Announcement</string>
+
+</resources>
