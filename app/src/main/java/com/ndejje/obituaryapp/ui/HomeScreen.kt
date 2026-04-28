@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.sp
 import com.ndejje.obituaryapp.R
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(onStartClicked: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -20,7 +20,6 @@ fun HomeScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // App Title using A-Plus Blue (Primary)
         Text(
             text = stringResource(id = R.string.funeral_service),
             fontSize = 28.sp,
@@ -28,7 +27,6 @@ fun HomeScreen() {
             color = MaterialTheme.colorScheme.primary
         )
 
-        // Slogan using String Resource
         Text(
             text = stringResource(id = R.string.slogan),
             fontSize = 18.sp,
@@ -38,9 +36,8 @@ fun HomeScreen() {
 
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_standard)))
 
-        // The Main Action Button
         Button(
-            onClick = { /* We will add navigation later */ },
+            onClick = onStartClicked,
             modifier = Modifier.fillMaxWidth(0.8f),
             shape = MaterialTheme.shapes.medium
         ) {
