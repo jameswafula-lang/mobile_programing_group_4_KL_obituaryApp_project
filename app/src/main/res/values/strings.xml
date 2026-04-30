@@ -4,4 +4,28 @@
     <string name="funeral_service">A Plus Funeral Services</string>
     <string name="btn_start">Create Announcement</string>
 
+    <string name="screen_templates">Announcement Templates</string>
+    <string name="screen_editor">Create Announcement</string>
+    <string name="screen_preview">Preview &amp; Share</string>
+
+    <string name="label_name">Full name of deceased</string>
+    <string name="label_dob">Date of birth (DD/MM/YYYY)</string>
+    <string name="label_dod">Date of death (DD/MM/YYYY)</string>
+    <string name="label_burial_date">Burial date (DD/MM/YYYY)</string>
+    <string name="label_village">Village / Area</string>
+    <string name="button_add_photo">Add Photo</string>
+    <string name="button_pick_location">Pick Burial Location on Map</string>
+    <string name="button_preview">Preview Announcement</string>
+    <string name="button_share">Share</string>
+    <string name="button_save">Save Draft</string>
+    <string name="button_next">Next</string>
+
+    <string name="template_classic">Classic White</string>
+    <string name="template_buganda">Buganda Traditional</string>
+    <string name="template_classic_msg">Forever in our hearts. May the angels welcome you with peace.</string>
+    <string name="template_buganda_msg">Ekitibwa kibeere eri Katonda. Rest well, Omutaka.</string>
+
+    <string name="error_fill_fields">Please fill all fields</string>
+    <string name="error_select_template">Select a template first</string>
+
 </resources>
