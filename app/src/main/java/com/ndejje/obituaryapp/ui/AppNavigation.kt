@@ -1,41 +1,52 @@
 package com.ndejje.obituaryapp.ui
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.ndejje.obituaryapp.ui.theme.ObituaryAppTheme
 
-@Composable
-fun AppNavigation() {
-    val navController = rememberNavController()
-
-    NavHost(navController = navController, startDestination = "home") {
-        composable("home") {
-            HomeScreen(onStartClicked = { navController.navigate("gallery") })
-        }
-        composable("gallery") {
-            TemplateGalleryScreen(onTemplateSelected = { navController.navigate("editor") })
-        }
-        composable("editor") {
-            // This calls your Editor Screen
-            AnnouncementEditorScreen(onPreviewClicked = { navController.navigate("preview") })
-        }
-        composable("preview") {
-            // Placeholder for the final screen
-            Text(text = "Final Announcement Card Preview")
-        }
-    }
+sealed class Screen(val route: String) {
+    object Home : Screen("home")
+    object TemplateGallery : Screen("template_gallery")
+    object Editor : Screen("editor")
+    object Preview : Screen("preview")
+    object SavedList : Screen("saved_list")
 }
 
-// --- PREVIEW SECTION ---
-// This allows you to see the Home Screen in the "Split" view
-@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun DefaultPreview() {
-    ObituaryAppTheme {
-        HomeScreen(onStartClicked = {})
+fun ObituaryAppNavigation(viewModel: AnnouncementViewModel) {
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = Screen.Home.route) {
+        composable(Screen.Home.route) {
+            HomeScreen(
+                onStartClicked = { navController.navigate(Screen.TemplateGallery.route) },
+                onViewSavedClicked = { navController.navigate(Screen.SavedList.route) }
+            )
+        }
+        composable(Screen.TemplateGallery.route) {
+            TemplateGalleryScreen(
+                onTemplateSelected = { templateId -> viewModel.selectTemplate(templateId) },
+                onNavigateToEditor = { navController.navigate(Screen.Editor.route) }
+            )
+        }
+        composable(Screen.Editor.route) {
+            AnnouncementEditorScreen(
+                viewModel = viewModel,
+                onNavigateToPreview = { navController.navigate(Screen.Preview.route) }
+            )
+        }
+        composable(Screen.Preview.route) {
+            PreviewShareScreen(
+                viewModel = viewModel,
+                onNavigateBack = { navController.popBackStack(Screen.Home.route, false) }
+            )
+        }
+        composable(Screen.SavedList.route) {
+            AnnouncementListScreen(
+                viewModel = viewModel,
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
     }
 }
