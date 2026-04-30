@@ -16,3 +16,8 @@ val APlusBlue = Color(0xFF1D428A)
 val APlusGold = Color(0xFFFFD700)
 val APlusWhite = Color(0xFFFFFFFF)
 val APlusGrey = Color(0xFFF5F5F5)
+
+val APlusBlack = Color(0xFF212121)
+val White = Color(0xFFFFFFFF)
+val APlusBlueLight = Color(0xFFEFF2FA)
+val APlusGoldDark = Color(0xFFCCAA00)
